@@ -11,10 +11,6 @@ class ClientController extends Controller
 {
     public function store(ServerRequestInterface $request, ResponseInterface $response){
         
-        // $response->withHeader('Content-type', 'application/json');
-
-        // return $response->getBody()->write($request->getParams());
-        
         $today = Carbon::now();
         $age   = Carbon::create($request->getParam('age'));
         
@@ -56,27 +52,6 @@ class ClientController extends Controller
 
 
    
-    }
-
-    public function findClient(ServerRequestInterface $request, ResponseInterface $response, array $args){
-        
-        $response->withHeader('Content-type', 'application/json');
-        
-        $result = Client::where('idnumber', '=', $args["idnumber"])->first();
-
-        if($result instanceof Client){
-            return $response->withJson([
-                'code'  => 100,
-                'data'    => $result,
-                'message' => 'OK' 
-            ]);
-        }  
-        return $response->withJson([
-            'code'  => 400,
-            'data'    => [],
-            'message' => 'Empty' 
-        ]);
-        
     }
 
 }

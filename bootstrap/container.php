@@ -13,3 +13,8 @@ $container["db"] = function () use ($capsule) {
 $container["ClientController"] = function($container){
     return new App\Controllers\ClientController($container);
 };
+
+$container["LoanController"] = function($container){
+    return new App\Controllers\LoanController($container);
+};
+
